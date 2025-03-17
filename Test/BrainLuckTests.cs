@@ -2,7 +2,7 @@
 
 namespace Test;
 
-public class UnitTest1
+public class BrainLuckTests
 {
     [Fact]
     public void Test1()
