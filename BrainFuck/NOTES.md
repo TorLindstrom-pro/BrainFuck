@@ -9,3 +9,12 @@
 ### Goal: 
 ### Time 🍅
 ### Notes:
+
+1. echo letters
+2. increment
+3. decrement
+4. move value pointer
+   1. right
+   2. left
+   3. back and forth
+5. looping
