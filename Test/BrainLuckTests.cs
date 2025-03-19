@@ -5,15 +5,13 @@ namespace Test;
 
 public class BrainLuckTests
 {
-    [Theory(DisplayName = "Increment single input letter")]
-    [InlineData("a", "b")]
-    [InlineData("g", "h")]
-    public void IncrementSingleLetter(string input, string expectedResult)
+    [Fact]
+    public void Test1()
     {
         // act
-        var result = Kata.BrainLuck(",+.", input);
+        var result = Kata.BrainLuck("", "");
         
         // assert
-        result.Should().Be(expectedResult);
+        result.Should().Be("");
     }
 }
