@@ -9,10 +9,20 @@ public class BrainLuckTests
     public void EchoSingleLetter()
     {
         // act
-        var result = Kata.BrainLuck(",.", "a");
+        var result = Kata.BrainLuck(",.", "ab");
         
         // assert
         result.Should().Be("a");
+    }
+
+    [Fact(DisplayName = "Echo two letters")]
+    public void EchoTwoLetters()
+    {
+        // act
+        var result = Kata.BrainLuck(",.,.", "ab");
+        
+        // assert
+        result.Should().Be("ab");
     }
 
     [Fact(DisplayName = "Ignore input, returning nothing")]
