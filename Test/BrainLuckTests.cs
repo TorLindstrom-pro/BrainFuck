@@ -14,4 +14,14 @@ public class BrainLuckTests
         // assert
         result.Should().Be("a");
     }
+
+    [Fact(DisplayName = "Ignore input, returning nothing")]
+    public void IgnoreInput()
+    {
+        // act
+        var result = Kata.BrainLuck("", "a");
+        
+        // assert
+        result.Should().Be("");
+    }
 }

@@ -4,6 +4,6 @@ public class Kata
 {
 	public static string BrainLuck(string code, string input)
 	{
-		return input;
+		return string.IsNullOrEmpty(code) ? "" : input;
 	}
 }
