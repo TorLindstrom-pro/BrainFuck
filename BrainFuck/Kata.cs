@@ -6,21 +6,19 @@ public class Kata
 {
 	public static string BrainLuck(string code, string input)
 	{
-		if (string.IsNullOrEmpty(code))
-			return "";
-
 		var resultBuilder = new StringBuilder();
 		var inputPointer = -1;
 		
-		for (var i = 0; i < code.Length; i++)
+		foreach (var command in code)
 		{
-			if (code[i] == '.')
+			switch (command)
 			{
-				resultBuilder.Append(input[inputPointer]);
-			}
-			else if (code[i] == ',')
-			{
-				inputPointer++;
+				case '.':
+					resultBuilder.Append(input[inputPointer]);
+					break;
+				case ',':
+					inputPointer++;
+					break;
 			}
 		}
 		
