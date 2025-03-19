@@ -8,16 +8,20 @@ public class Kata
 	{
 		var resultBuilder = new StringBuilder();
 		var inputPointer = -1;
+		var value = '\0';
 		
 		foreach (var command in code)
 		{
 			switch (command)
 			{
 				case '.':
-					resultBuilder.Append(input[inputPointer]);
+					resultBuilder.Append(value);
 					break;
 				case ',':
-					inputPointer++;
+					value = input[++inputPointer];
+					break;
+				case '+':
+					value++;
 					break;
 			}
 		}
