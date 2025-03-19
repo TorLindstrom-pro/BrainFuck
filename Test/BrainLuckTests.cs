@@ -25,6 +25,16 @@ public class BrainLuckTests
         result.Should().Be("ab");
     }
 
+    [Fact(DisplayName = "Echo non-contiguous letters")]
+    public void EchoNonContiguousLetters()
+    {
+        // act
+        var result = Kata.BrainLuck(",.,,.", "abc");
+        
+        // assert
+        result.Should().Be("ac");
+    }
+
     [Fact(DisplayName = "Ignore input, returning nothing")]
     public void IgnoreInput()
     {
