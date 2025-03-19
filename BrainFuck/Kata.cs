@@ -23,6 +23,9 @@ public class Kata
 				case '+':
 					value++;
 					break;
+				case '-':
+					value--;
+					break;
 			}
 		}
 		

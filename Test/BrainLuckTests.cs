@@ -54,6 +54,26 @@ public class BrainLuckTests
         // assert
         result.Should().Be("bd");
     }
+    
+    [Fact(DisplayName = "Decrement single letter")]
+    public void DecrementSingleLetter()
+    {
+        // act
+        var result = Kata.BrainLuck(",-.", "b");
+        
+        // assert
+        result.Should().Be("a");
+    }
+
+    [Fact(DisplayName = "Decrement non-contiguous letters")]
+    public void DecrementTwoLetters()
+    {
+        // act
+        var result = Kata.BrainLuck(",-.,,-.", "efg");
+        
+        // assert
+        result.Should().Be("df");
+    }
 
     [Fact(DisplayName = "Ignore input, returning nothing")]
     public void IgnoreInput()
