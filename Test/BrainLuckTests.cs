@@ -84,4 +84,14 @@ public class BrainLuckTests
         // assert
         result.Should().Be("");
     }
+
+    [Fact(DisplayName = "Empty output if never printing")]
+    public void EmptyOutputIfNoPrintCommands()
+    {
+        // act
+        var result = Kata.BrainLuck("+-,", "a");
+        
+        // assert
+        result.Should().Be("");
+    }
 }
