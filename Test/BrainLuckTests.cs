@@ -75,6 +75,16 @@ public class BrainLuckTests
         result.Should().Be("df");
     }
 
+    [Fact(DisplayName = "> moves value pointer to the right")]
+    public void MovePointerRight()
+    {
+        // act
+        var result = Kata.BrainLuck(",>.", "a");
+        
+        // assert
+        result.Should().Be("\0");
+    }
+
     [Fact(DisplayName = "Ignore input, returning nothing")]
     public void IgnoreInput()
     {

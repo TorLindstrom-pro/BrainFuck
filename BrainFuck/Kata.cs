@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text;
 
 namespace BrainFuck;
@@ -7,24 +8,28 @@ public class Kata
 	public static string BrainLuck(string code, string input)
 	{
 		var resultBuilder = new StringBuilder();
+		var valuePointer = 0;
+        var values = new char[30000];
 		var inputPointer = -1;
-		var value = '\0';
-		
+
 		foreach (var command in code)
 		{
 			switch (command)
 			{
 				case '.':
-					resultBuilder.Append(value);
+					resultBuilder.Append(values[valuePointer]);
 					break;
 				case ',':
-					value = input[++inputPointer];
+					values[valuePointer] = input[++inputPointer];
 					break;
 				case '+':
-					value++;
+					values[valuePointer]++;
 					break;
 				case '-':
-					value--;
+					values[valuePointer]--;
+					break;
+				case '>':
+					valuePointer++;
 					break;
 			}
 		}
