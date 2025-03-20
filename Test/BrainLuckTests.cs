@@ -84,6 +84,13 @@ public class BrainLuckTests
         // assert
         result.Should().Be("\0");
     }
+    
+    [Fact(DisplayName = "moving pointer to outside of the leftmost cell throws exception")]
+    public void MovePointerLeft()
+    {
+        // assert
+        Assert.Throws<IndexOutOfRangeException>(() => Kata.BrainLuck(",<.", "a"));
+    }
 
     [Fact(DisplayName = "Ignore input, returning nothing")]
     public void IgnoreInput()

@@ -31,6 +31,9 @@ public class Kata
 				case '>':
 					valuePointer++;
 					break;
+				case '<':
+					valuePointer--;
+					break;
 			}
 		}
 		
