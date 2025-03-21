@@ -41,7 +41,10 @@ public class Kata
 					valuePointer++;
 					break;
 				case '<':
-					valuePointer--;
+					if (valuePointer == 0)
+						valuePointer = values.Length - 1;
+					else
+						valuePointer--;
 					break;
 				case '[':
 					if (values[valuePointer] == 0)

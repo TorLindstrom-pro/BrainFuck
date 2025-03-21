@@ -25,10 +25,13 @@ public class MovePointerTests
 		result.Should().Be("a");
 	}
 
-	[Fact(DisplayName = "moving pointer to outside of the leftmost cell throws exception")]
+	[Fact(DisplayName = "moving pointer to outside of the leftmost cell wraps around to last cell")]
 	public void MovePointerOutsideTheLeftmostCell()
 	{
+		// act
+		var result = Kata.BrainLuck("<<<+.", "");
+		
 		// assert
-		Assert.Throws<IndexOutOfRangeException>(() => Kata.BrainLuck(",<.", "a"));
+		result.Should().Be(((char)1).ToString());
 	}
 }
