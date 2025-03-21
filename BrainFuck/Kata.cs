@@ -11,9 +11,11 @@ public class Kata
 		var valuePointer = 0;
         var values = new char[30000];
 		var inputPointer = -1;
+		var loopPointer = 0;
 
-		foreach (var command in code)
+		for (var index = 0; index < code.Length; index++)
 		{
+			var command = code[index];
 			switch (command)
 			{
 				case '.':
@@ -40,9 +42,16 @@ public class Kata
 				case '<':
 					valuePointer--;
 					break;
+				case '[':
+					loopPointer = index;
+					break;
+				case ']':
+					if (values[valuePointer] > 0) 
+						index = loopPointer;
+					break;
 			}
 		}
-		
+
 		return resultBuilder.ToString();
 	}
 }

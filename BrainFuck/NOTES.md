@@ -18,8 +18,8 @@
    2. ~~left~~
    3. ~~back and forth~~
 5. looping
-6. 255 + 1 = 0
-7. 0 - 1 = 255
+6. ~~255 + 1 = 0~~
+7. ~~0 - 1 = 255~~
 8. too many , for input
 
 
