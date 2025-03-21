@@ -8,8 +8,8 @@ public class Kata
 	public static string BrainLuck(string code, string input)
 	{
         var values = new char[30000];
-		var valuePointer = 0;
-		var inputPointer = 0;
+		int valuePointer = 0, 
+			inputPointer = 0;
 		var loopPointers = new Stack<int>();
 
 		var resultBuilder = new StringBuilder();
