@@ -9,7 +9,7 @@ public class Kata
 	{
         var values = new char[30000];
 		var valuePointer = 0;
-		var inputPointer = -1;
+		var inputPointer = 0;
 		var loopPointers = new Stack<int>();
 
 		var resultBuilder = new StringBuilder();
@@ -23,7 +23,7 @@ public class Kata
 					resultBuilder.Append(values[valuePointer]);
 					break;
 				case ',':
-					values[valuePointer] = input[++inputPointer];
+					values[valuePointer] = input[inputPointer++];
 					break;
 				case '+':
 					if (values[valuePointer] == 255)
