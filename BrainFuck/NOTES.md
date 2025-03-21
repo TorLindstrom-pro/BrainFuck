@@ -15,8 +15,8 @@
 3. ~~decrement~~
 4. move value pointer
    1. ~~right~~
-   2. left
-   3. back and forth
+   2. ~~left~~
+   3. ~~back and forth~~
 5. looping
 6. 255 + 1 = 0
 7. 0 - 1 = 255
