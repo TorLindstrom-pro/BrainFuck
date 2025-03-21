@@ -10,7 +10,6 @@ public class Kata
         var values = new char[30000];
 		var valuePointer = 0;
 		var inputPointer = -1;
-		var loopPointer = 0;
 		var loopPointers = new Stack<int>();
 
 		var resultBuilder = new StringBuilder();
