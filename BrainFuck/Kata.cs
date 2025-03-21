@@ -23,7 +23,10 @@ public class Kata
 					values[valuePointer] = input[++inputPointer];
 					break;
 				case '+':
-					values[valuePointer]++;
+					if (values[valuePointer] == 255)
+						values[valuePointer] = (char)0;
+					else
+						values[valuePointer]++;
 					break;
 				case '-':
 					values[valuePointer]--;
