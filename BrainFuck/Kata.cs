@@ -14,9 +14,9 @@ public class Kata
 
 		var resultBuilder = new StringBuilder();
 
-		for (var index = 0; index < code.Length; index++)
+		for (var codePointer = 0; codePointer < code.Length; codePointer++)
 		{
-			var command = code[index];
+			var command = code[codePointer];
 			switch (command)
 			{
 				case '.':
@@ -44,11 +44,11 @@ public class Kata
 					valuePointer--;
 					break;
 				case '[':
-					loopPointers.Push(index);
+					loopPointers.Push(codePointer);
 					break;
 				case ']':
 					if (values[valuePointer] > 0)
-						index = loopPointers.Peek();
+						codePointer = loopPointers.Peek();
 					else
 						loopPointers.Pop();
 					break;
