@@ -7,11 +7,12 @@ public class Kata
 {
 	public static string BrainLuck(string code, string input)
 	{
-		var resultBuilder = new StringBuilder();
-		var valuePointer = 0;
         var values = new char[30000];
+		var valuePointer = 0;
 		var inputPointer = -1;
 		var loopPointer = 0;
+		
+		var resultBuilder = new StringBuilder();
 
 		for (var index = 0; index < code.Length; index++)
 		{
