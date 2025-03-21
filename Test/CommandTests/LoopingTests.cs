@@ -14,4 +14,14 @@ public class LoopingTests
 	    // assert
 	    result.Should().Be("\u0003");
 	}
+
+	[Fact(DisplayName = "Nested loops work")]
+	public void NestedLoopsWork()
+	{
+	    // act
+	    var result = Kata.BrainLuck("+++[>+++[>+<-]<-]>>.", "");
+	
+	    // assert
+	    result.Should().Be("\u0009");
+	}
 }

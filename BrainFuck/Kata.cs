@@ -11,7 +11,8 @@ public class Kata
 		var valuePointer = 0;
 		var inputPointer = -1;
 		var loopPointer = 0;
-		
+		var loopPointers = new Stack<int>();
+
 		var resultBuilder = new StringBuilder();
 
 		for (var index = 0; index < code.Length; index++)
@@ -44,11 +45,13 @@ public class Kata
 					valuePointer--;
 					break;
 				case '[':
-					loopPointer = index;
+					loopPointers.Push(index);
 					break;
 				case ']':
-					if (values[valuePointer] > 0) 
-						index = loopPointer;
+					if (values[valuePointer] > 0)
+						index = loopPointers.Peek();
+					else
+						loopPointers.Pop();
 					break;
 			}
 		}
