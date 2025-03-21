@@ -24,4 +24,14 @@ public class LoopingTests
 	    // assert
 	    result.Should().Be("\u0009");
 	}
+
+	[Fact(DisplayName = "If value at pointer is zero, skip loop")]
+	public void NestedLoopsWork2()
+	{
+	    // act
+	    var result = Kata.BrainLuck("[>++<]>.", "");
+	
+	    // assert
+	    result.Should().Be("\0");
+	}
 }

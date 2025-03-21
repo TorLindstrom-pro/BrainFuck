@@ -44,6 +44,8 @@ public class Kata
 					valuePointer--;
 					break;
 				case '[':
+					if (values[valuePointer] == 0)
+						codePointer = code.IndexOf(']', codePointer);
 					loopPointers.Push(codePointer);
 					break;
 				case ']':
