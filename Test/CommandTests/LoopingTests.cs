@@ -26,10 +26,20 @@ public class LoopingTests
 	}
 
 	[Fact(DisplayName = "If value at pointer is zero, skip loop")]
-	public void NestedLoopsWork2()
+	public void SkipLoopIfValueIsZero()
 	{
 	    // act
 	    var result = Kata.BrainLuck("[>++<]>.", "");
+	
+	    // assert
+	    result.Should().Be("\0");
+	}
+
+	[Fact(DisplayName = "If value at pointer is zero, skip nested loops as well")]
+	public void SkipNestedLoopsIfValueIsZero()
+	{
+	    // act
+	    var result = Kata.BrainLuck("[>++[>++<-]<]>>.", "");
 	
 	    // assert
 	    result.Should().Be("\0");

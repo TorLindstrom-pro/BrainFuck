@@ -20,7 +20,10 @@
 5. ~~looping~~
 6. ~~255 + 1 = 0~~
 7. ~~0 - 1 = 255~~
-8. too many , for input
+8. skipped loops
+9. nested skipped loops
+10. skip loop if value is below 0
+11. too many , for input
 
 
 value pointer, has a value and a previous and next pointer, "chain"
