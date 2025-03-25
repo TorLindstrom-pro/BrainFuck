@@ -22,14 +22,16 @@ public class Kata
 			var command = code[codePointer];
 
 			if (skippingLoop)
-				SkipCommandsInLoop(command);
+				SkipCommandOrExitLoop(command);
 			else
 				ExecuteCommand(command, ref codePointer);
 		}
 
 		return resultBuilder.ToString();
+		
+		// Functions
 
-		void SkipCommandsInLoop(char command)
+		void SkipCommandOrExitLoop(char command)
 		{
 			switch (command)
 			{
