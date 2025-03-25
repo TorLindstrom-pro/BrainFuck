@@ -21,31 +21,15 @@ public class Kata
 		{
 			var command = code[codePointer];
 
-			if (skippingLoop)
-				SkipCommandOrExitLoop(command);
-			else
+			if (!skippingLoop)
 				ExecuteCommand(command, ref codePointer);
+			else
+				SkipCommandOrExitLoop(command);
 		}
 
 		return resultBuilder.ToString();
 		
 		// Functions
-
-		void SkipCommandOrExitLoop(char command)
-		{
-			switch (command)
-			{
-				case '[':
-					loopsDeep++;
-					break;
-				case ']':
-					if (loopsDeep == 0)
-						skippingLoop = false;
-					else
-						loopsDeep--;
-					break;
-			}
-		}
 		
 		void ExecuteCommand(char command, ref int codePointer)
 		{
@@ -74,6 +58,22 @@ public class Kata
 					break;
 				case ']':
 					ContinueOrEndLoop(ref codePointer);
+					break;
+			}
+		}
+		
+		void SkipCommandOrExitLoop(char command)
+		{
+			switch (command)
+			{
+				case '[':
+					loopsDeep++;
+					break;
+				case ']':
+					if (loopsDeep == 0)
+						skippingLoop = false;
+					else
+						loopsDeep--;
 					break;
 			}
 		}
