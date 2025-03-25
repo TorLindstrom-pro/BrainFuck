@@ -36,40 +36,22 @@ public class Kata
 						values[valuePointer] = input[inputPointer++];
 						break;
 					case '+':
-						if (values[valuePointer] == 255)
-							values[valuePointer] = (char)0;
-						else
-							values[valuePointer]++;
+						IncrementOrOverflow(ref values[valuePointer]);
 						break;
 					case '-':
-						if (values[valuePointer] == 0)
-							values[valuePointer] = (char)255;
-						else
-							values[valuePointer]--;
+						DecrementOrUnderflow(ref values[valuePointer]);
 						break;
 					case '>':
-						if (valuePointer == values.Length - 1)
-							valuePointer = 0;
-						else
-							valuePointer++;
+						MoveRightOrWrap(ref valuePointer);
 						break;
 					case '<':
-						if (valuePointer == 0)
-							valuePointer = values.Length - 1;
-						else
-							valuePointer--;
+						MoveLeftOrWrap(ref valuePointer);
 						break;
 					case '[':
-						if (values[valuePointer] <= 0)
-							skippingLoop = true;
-						else
-							loopPointers.Push(codePointer);
+						skippingLoop = StartOrSkipLoop(codePointer);
 						break;
 					case ']':
-						if (values[valuePointer] > 0)
-							codePointer = loopPointers.Peek();
-						else
-							loopPointers.Pop();
+						ContinueOrEndLoop(ref codePointer);
 						break;
 				}
 			}
@@ -91,6 +73,55 @@ public class Kata
 						loopsDeep--;
 					break;
 			}
+		}
+
+		void IncrementOrOverflow(ref char value)
+		{
+			if (value == 255)
+				value = (char)0;
+			else
+				value++;
+		}
+
+		void DecrementOrUnderflow(ref char value)
+		{
+			if (value == 0)
+				value = (char)255;
+			else
+				value--;
+		}
+
+		void MoveRightOrWrap(ref int pointer)
+		{
+			if (pointer == values.Length - 1)
+				pointer = 0;
+			else
+				pointer++;
+		}
+
+		void MoveLeftOrWrap(ref int pointer)
+		{
+			if (pointer == 0)
+				pointer = values.Length - 1;
+			else
+				pointer--;
+		}
+
+		bool StartOrSkipLoop(int codePointer)
+		{
+			if (values[valuePointer] <= 0)
+				skippingLoop = true;
+			else
+				loopPointers.Push(codePointer);
+			return skippingLoop;
+		}
+
+		void ContinueOrEndLoop(ref int codePointer)
+		{
+			if (values[valuePointer] > 0)
+				codePointer = loopPointers.Peek();
+			else
+				loopPointers.Pop();
 		}
 	}
 }
