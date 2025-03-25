@@ -14,27 +14,16 @@ public class Kata
 
 		var resultBuilder = new StringBuilder();
 
-		var skip = false;
-		var deep = 0;
+		var skippingLoop = false;
+		var loopsDeep = 0;
 
 		for (var codePointer = 0; codePointer < code.Length; codePointer++)
 		{
 			var command = code[codePointer];
 
-			if (skip)
+			if (skippingLoop)
 			{
-				switch (command)
-				{
-					case '[':
-						deep++;
-						break;
-					case ']':
-						if (deep == 0)
-							skip = false;
-						else
-							deep--;
-						break;
-				}
+				SkipCommandsInLoop(command);
 			}
 			else
 			{
@@ -71,9 +60,10 @@ public class Kata
 							valuePointer--;
 						break;
 					case '[':
-						if (values[valuePointer] == 0)
-							skip = true;
-						loopPointers.Push(codePointer);
+						if (values[valuePointer] <= 0)
+							skippingLoop = true;
+						else
+							loopPointers.Push(codePointer);
 						break;
 					case ']':
 						if (values[valuePointer] > 0)
@@ -86,5 +76,21 @@ public class Kata
 		}
 
 		return resultBuilder.ToString();
+
+		void SkipCommandsInLoop(char command)
+		{
+			switch (command)
+			{
+				case '[':
+					loopsDeep++;
+					break;
+				case ']':
+					if (loopsDeep == 0)
+						skippingLoop = false;
+					else
+						loopsDeep--;
+					break;
+			}
+		}
 	}
 }
