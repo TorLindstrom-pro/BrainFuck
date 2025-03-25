@@ -10,12 +10,12 @@ public class Kata
 		var values = new char[30000];
 		int valuePointer = 0,
 			inputPointer = 0;
+		
 		var loopPointers = new Stack<int>();
-
-		var resultBuilder = new StringBuilder();
-
 		var skippingLoop = false;
 		var loopsDeep = 0;
+		
+		var resultBuilder = new StringBuilder();
 
 		for (var codePointer = 0; codePointer < code.Length; codePointer++)
 		{
