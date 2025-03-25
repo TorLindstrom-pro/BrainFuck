@@ -22,39 +22,9 @@ public class Kata
 			var command = code[codePointer];
 
 			if (skippingLoop)
-			{
 				SkipCommandsInLoop(command);
-			}
 			else
-			{
-				switch (command)
-				{
-					case '.':
-						resultBuilder.Append(values[valuePointer]);
-						break;
-					case ',':
-						values[valuePointer] = input[inputPointer++];
-						break;
-					case '+':
-						IncrementOrOverflow(ref values[valuePointer]);
-						break;
-					case '-':
-						DecrementOrUnderflow(ref values[valuePointer]);
-						break;
-					case '>':
-						MoveRightOrWrap(ref valuePointer);
-						break;
-					case '<':
-						MoveLeftOrWrap(ref valuePointer);
-						break;
-					case '[':
-						skippingLoop = StartOrSkipLoop(codePointer);
-						break;
-					case ']':
-						ContinueOrEndLoop(ref codePointer);
-						break;
-				}
-			}
+				ExecuteCommand(command, ref codePointer);
 		}
 
 		return resultBuilder.ToString();
@@ -71,6 +41,37 @@ public class Kata
 						skippingLoop = false;
 					else
 						loopsDeep--;
+					break;
+			}
+		}
+		
+		void ExecuteCommand(char command, ref int codePointer)
+		{
+			switch (command)
+			{
+				case '.':
+					resultBuilder.Append(values[valuePointer]);
+					break;
+				case ',':
+					values[valuePointer] = input[inputPointer++];
+					break;
+				case '+':
+					IncrementOrOverflow(ref values[valuePointer]);
+					break;
+				case '-':
+					DecrementOrUnderflow(ref values[valuePointer]);
+					break;
+				case '>':
+					MoveRightOrWrap(ref valuePointer);
+					break;
+				case '<':
+					MoveLeftOrWrap(ref valuePointer);
+					break;
+				case '[':
+					skippingLoop = StartOrSkipLoop(codePointer);
+					break;
+				case ']':
+					ContinueOrEndLoop(ref codePointer);
 					break;
 			}
 		}
